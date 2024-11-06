@@ -30,11 +30,11 @@ public class Main {
         int ageinYears = months / 12;
         int ageinMonths = months % 12;
 
-        // Adjust birth date to get the date after accounting for full years and months
+        // we have to update the date instance so we can extract the milliseconds from it
         birthDate.add(Calendar.YEAR, ageinYears);
         birthDate.add(Calendar.MONTH, ageinMonths);
 
-        // Calculate remaining days after full years and months
+        //  remaining days after full years and months are accounted for
         long diffInMillis = currentDate.getTimeInMillis() - birthDate.getTimeInMillis();
         long ageinDays = TimeUnit.MILLISECONDS.toDays(diffInMillis);
 
