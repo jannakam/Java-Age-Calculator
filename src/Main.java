@@ -1,5 +1,6 @@
 import java.util.Calendar;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,6 +30,15 @@ public class Main {
         int ageinYears = months / 12;
         int ageinMonths = months % 12;
 
-        System.out.println("You are " + ageinYears + " years, " + ageinMonths + " month(s), and " + currentDate.get(Calendar.DAY_OF_MONTH) + " day(s) old");
+        // Adjust birth date to get the date after accounting for full years and months
+        birthDate.add(Calendar.YEAR, ageinYears);
+        birthDate.add(Calendar.MONTH, ageinMonths);
+
+        // Calculate remaining days after full years and months
+        long diffInMillis = currentDate.getTimeInMillis() - birthDate.getTimeInMillis();
+        long ageinDays = TimeUnit.MILLISECONDS.toDays(diffInMillis);
+
+
+        System.out.println("You are " + ageinYears + " years, " + ageinMonths + " month(s), and " + ageinDays + " day(s) old");
     }
 }
