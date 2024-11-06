@@ -29,6 +29,6 @@ public class Main {
         int ageinYears = months / 12;
         int ageinMonths = months % 12;
 
-        System.out.println("You are " + ageinYears + " years, " + ageinMonths + " month(s), and " + dayInput + " day(s) old");
+        System.out.println("You are " + ageinYears + " years, " + ageinMonths + " month(s), and " + currentDate.get(Calendar.DAY_OF_MONTH) + " day(s) old");
     }
 }
